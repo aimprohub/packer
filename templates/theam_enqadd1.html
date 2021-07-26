@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Mat Mgt</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: #fef1ae;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: auto;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      /* .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      */
+      .row.content {
+        height: auto;
+      }
+    }
+    
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+     
+      background-color: #122d54;
+  }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <a class="navbar-brand" href="#">Logo</a>
+        <ul class="nav navbar-nav" style="flex-direction: row;">
+          <li><a href="#">Home</a></li>
+          <li class="active"><a href="http://google.com">Enq Process</a></li>
+          <li><a href="#">Resources assignment</a></li>
+          <li><a href="#">Material usage</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid text-center">
+    <div class="row content">
+      <div class="col-sm-2 sidenav">
+        <!-- <p><a href="http://localhost:5000/enqshow">Enq List</a></p>
+        <p><a href=" http://localhost:5000/enq_insert">New Enq</a></p>
+        <p><a href="#">Search</a></p> -->
+        <div class=" align-items-start">
+          <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><a href="http://localhost:5000/enqshow">Enq List</a></button>
+            <button class="nav-link active" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false"><a href=" http://localhost:5000/enq_insert">New Enq</a></button>
+            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false"><a href="#">Search</a></button>
+          </div>
+          <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">...</div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-sm-10 text-left">
+        <h1>Material Transport Management</h1>
+
+        <hr>
+        <h3>Add Enquery</h3>
+
+        <body>
+          <form id="myForm" action="/addrecord" method="POST">
+            <style>
+              table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+              }
+
+              td,
+              th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+              }
+
+              tr:nth-child(even) {
+                background-color: #dddddd;
+              }
+            </style>
+            <! -- page enq_enqadd1 start -->
+
+
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+              <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>  -->
+
+              <body>
+
+                <div class="container-fluid">
+                  <h3>Input form: states</h3>
+                  <form class="form-horizontal action='/addrecord'">
+                    <div class="row">
+                      <div class="form-group col-sm-6 col-md-6 col-lg-4">
+                        <label class="control-label">Name</label>
+                        <div class="">
+                          <input class="form-control form-control-sm" id="focusedInput" type="text"
+                            value="Enter Name ..." name="name">
+                        </div>
+                      </div>
+
+                      <div class="form-group col-sm-6 col-md-6 col-lg-4">
+                        <label class="control-label">Contact No</label>
+                        <div class="">
+                          <input class="form-control form-control-sm" id="focusedInput" type="text"
+                            value="Enter Mob / Ph No..." name="MobileNo">
+                        </div>
+                      </div>
+
+                      <div class="form-group col-sm-6 col-md-6 col-lg-4">
+                        <label class="control-label">Mode</label>
+                        <div class="">
+                          <input class="form-control form-control-sm" id="focusedInput" type="text" value="mode"
+                            name="modee">
+                        </div>
+                      </div>
+
+                      <div class="form-group col-sm-6 col-md-6 col-lg-4">
+                        <label class="control-label">eMail Id</label>
+                        <div class="">
+                          <input class="form-control form-control-sm" id="focusedInput" type="text" value="eMail id..."
+                            name="email_id">
+                        </div>
+                      </div>
+
+                      <div class="form-group col-sm-6 col-md-6 col-lg-4">
+                        <label class="control-label">Load Address</label>
+                        <div class="">
+                          <input class="form-control form-control-sm" id="focusedInput" type="text"
+                            value="Address.1234.." name="add_load">
+                        </div>
+                      </div>
+
+                      <div class="form-group col-sm-6 col-md-6 col-lg-4">
+                        <label class="control-label">Unload Address</label>
+                        <div class="">
+                          <input class="form-control form-control-sm" id="focusedInput" type="text"
+                            value="Address.abcd." name="add_unload">
+                        </div>
+                      </div>
+
+                      <div class="form-group col-sm-6 col-md-6 col-lg-4">
+                        <label class="control-label">Enquiry Date</label>
+                        <div class="">
+                          <input class="form-control form-control-sm" id="focusedInput" type="date" value="dt"
+                            name="enqdate" format="yyyy-mm-dd">
+                        </div>
+                      </div>
+
+                      <div class="form-group col-sm-6 col-md-6 col-lg-4">
+                        <label class="control-label">Tantative Date</label>
+                        <div class="">
+                          <input class="form-control form-control-sm" id="focusedInput" type="date" value="dt"
+                            name="tdate" value="2021-03-04">
+                        </div>
+                      </div>
+
+
+                      <div class="form-group col-sm-6 col-md-6 col-lg-4">
+                        <label class="control-label">floor_no_load</label>
+                        <div class="">
+                          <input class="form-control form-control-sm" id="focusedInput" type="text" value="3"
+                            name="floor_no_load">
+                        </div>
+                      </div>
+
+                      <div class="form-group col-sm-6 col-md-6 col-lg-4">
+                        <label class="control-label">floor_no_unload</label>
+                        <div class="">
+                          <input class="form-control form-control-sm" id="focusedInput" type="text" value="8"
+                            name="floor_no_unload">
+                        </div>
+                      </div>
+
+                      <div class="form-group col-sm-6 col-md-6 col-lg-4">
+                        <label class="control-label">lift_avail_load</label>
+                        <div class="">
+                          <input class="form-control form-control-sm" id="focusedInput" type="text" value="3"
+                            name="lift_avail_load">
+                        </div>
+                      </div>
+
+                      <div class="form-group col-sm-6 col-md-6 col-lg-4">
+                        <label class="control-label">lift_avail_unload</label>
+                        <div class="">
+                          <input class="form-control form-control-sm" id="focusedInput" type="text" value="3"
+                            name="lift_avail_unload">
+                        </div>
+                      </div>
+
+                      <div class="form-group col-sm-6 col-md-6 col-lg-4">
+                        <label class="control-label">Area of unload address</label>
+                        <div class="">
+                          <input class="form-control form-control-sm" id="focusedInput" type="text" value="Sq ft...">
+                        </div>
+                      </div>
+
+                      <div class="form-group col-sm-6 col-md-6 col-lg-4">
+                        <label class="control-label">Visit required</label>
+                        <div class="">
+                          <input class="form-control form-control-sm" id="focusedInput" type="text" value="y"
+                            name="visit_req">
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="form-group text-center">
+                      <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                  </form>
+                </div>
+
+              </body>
+
+</html>
+<! -- page enq_show End -->
+  </div>
+
+
+  </div>
+  </div>
+
+  <footer class="container-fluid text-center">
+    <p>Footer Text</p>
+  </footer>
+
+  </body>
+
+  </html>

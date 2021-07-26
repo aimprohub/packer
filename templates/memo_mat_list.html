@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% set active_page = "calibration" %}
+{% block content %}
+<div class="container-fluid text-center">
+  <div class="row content">
+
+    <div class="row content">
+      <div class="col-sm-1 sidenav">
+        <!-- Right side margin-->
+
+      </div>
+      <div class="col-sm-10 text-left">
+
+        <h3>Quotation Tracker</h3>
+
+        <form name="myForm" action="/open_enq" onsubmit="return validateForm()" method="post">
+
+          <table>
+            <thead>
+              <tr>
+                <th style="font-size: 14px; text-align: center;">Quotation ID</th>
+                <th class="medium">Select Record</th>
+                <!-- <th>Select</th> -->
+                <th class="medium">Enquiry Id</th>
+                <th>Party Name</th>
+                <th>Visit Id</th>
+                <th>Quotaion Date</th>
+                <th>Quotation Type</th>
+                <th>Description</th>
+                <th>Amount Rs.</th>
+
+                <!--<th>Schedule_Vist</th> -->
+
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in data %}
+              <tr>
+                <!-- <td><a href=/disp_table1?recid={{row[0]}}> {{row[0]}}  </a></td> -->
+                <td><a href=/open_enq?recid={{row[0]}}> {{row[0]}} </a></td>
+                <!--<td><a href="{{ url_for('page1', my_var=row) }} ">Submit</a></td> -->
+
+                <td><input type="radio" name="enqid_select" value={{row[1]}}> </td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td>{{row[4]}}</td>
+                <td>{{row[5]}}</td>
+                <td>{{row[6]}}</td>
+                <td>{{row[7]}}</td>
+                <!-- <td><a href=/schedule?recid={{row[0]}}> Schedule Visit  </a></td>-->
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <br>
+          <input type="submit" name="submit" value="Open Enquiry">
+
+          <input type="submit" name="submit" value="Work Order Memo">
+
+      </div>
+      </form>
+
+
+      </form>
+      <script>
+        function validateForm() {
+
+          var x = document.forms["myForm"]["enqid_select"].value;
+
+          if (x == "") {
+            alert("Please select Enquiry row to process.");
+            return false;
+          }
+        }
+      </script>
+      {% endblock %}

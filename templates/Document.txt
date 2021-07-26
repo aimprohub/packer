@@ -1,0 +1,11 @@
+Proj under KetanUI folder. 
+Project req given by Suyash Saha. System will give automatin for Packing and moving courier.
+Start with Login. However this layr is not yet added. 
+/disp_table  display all enquiry in the table enquiry. Under  this page there are buttons for /Open_enq, /visit, 
+record_edit and Quot_Form, work_mome_ordr. On click thiw will open that page. Click on menu for new_enq will  opwn /enq_insert. This page is just input for all fiels.
+l. 
+Meeting with Suysh on 4/5/21: to add visit page. Add xxx page by selecting enq entry. 
+Things to add by next week:
+  visit form (in this form there is option to assign material, assing visit person and date)
+  Quot_Form
+  Work_memo_order

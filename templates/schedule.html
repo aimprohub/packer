@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Mat Mgt</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: #fef1ae;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {
+      height: 650px
+    }
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    .sidenavtxt {
+      background-color: #122d54;
+      padding: .5rem 1rem;
+      border-radius: .25rem;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+
+      .row.content {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Logo</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#">Home</a></li>
+          <li class="active"><a href="http://google.com">Enq Process</a></li>
+          <li><a href="#">Resources assignment</a></li>
+          <li><a href="#">Material usage</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid text-center">
+    <div class="row content">
+      <div class="col-sm-2 sidenav">
+        <p class="sidenavtxt"><a href="http://localhost:5000/enqshow">Enq List</a></p>
+        <p><a href="http://localhost:5000/enq_insert">New Enq</a></p>
+        <p><a href="#">Search</a></p>
+      </div>
+      <div class="col-sm-9 text-left">
+        <h1>Material Transport Management</h1>
+
+        <hr>
+        <div class="container-fluid">
+          <div class="row">
+            <form action="/update_record" method="POST">
+              <input type="hidden" name ="modee" value="phone">
+              {% for row in data %} 
+              <div class="form-row">
+                <input type = "hidden" name = "enquiry_id" value={{row[0]}}
+                
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3">
+                  <label>Customer Name: {{row[3]}}</label>
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3">
+                  <label>Enquiry_id : {{row[0]}}</label>
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3">
+                  <label>Mob No : {{row[4]}}</label>
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3">
+                  <label>Addres Load : {{row[7]}}</label>
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4">
+                  <label>Address Unload : {{row[8]}}</label>
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4">
+                  <label>Assigned to : </label>
+                  <select id="execetive_name" name="execative_name" class="form-control form-control-sm">
+                    <option value="caption">Select Name</option>
+                    <option value="volvo">Nagesh S</option>
+                    <option value="saab">Nitin K</option>
+                    <option value="mercedes">Sandeep H</option>
+                    <option value="audi">Gaurav Sham</option>
+                  </select>
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4">
+                  <label>Schedule Visit Date:</label>
+                  <input type="text" name="schedule_visit" class="form-control form-control-sm" default
+                    value="2021-02-11" />
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4">
+                  <label>Tentative Date of move:</label>
+                  <input type="text" name="tdate" class="form-control form-control-sm" default value={{row[6]}} />
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4">
+                  <label>House_area_load (sq ft) :</label>
+                  <input type="text" name="house_size_load" class="form-control form-control-sm" default
+                    value={{row[10]}} />
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4">
+                  <label>House_size_unload (sq ft) : </label>
+                  <input type="text" name="house_size_unload" class="form-control form-control-sm" default
+                    value={{row[10]}} />
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4">
+                  <label>Floor_no_loading:</label>
+                  <input type="text" name="floor_no_load" class="form-control form-control-sm" default
+                    value={{row[11]}} />
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4">
+                  <label>Floor_no_unloading:</label>
+                  <input type="text" name="floor_no_unload" class="form-control form-control-sm" default
+                    value={{row[12]}} />
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4">
+                  <label>Lift_available_loading(y/n):</label>
+                  <input type="text" name="lift_avail_load" class="form-control form-control-sm" />
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4">
+                  <label>Lift_available_unloading(y/n):</label>
+                  <input type="text" name="lift_avail_unload" class="form-control form-control-sm" />
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4">
+                  <label>Visit_required(y/n):</label>
+                  <input type="text" name="visit_required" class="form-control form-control-sm" />
+                </div>
+                <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4">
+                  <label>Invoice_required(y/n):</label>
+                  <input type="text" name="inv_required" class="form-control form-control-sm" />
+                  
+                </div>
+              </div>
+              <div class="form-group text-center">
+                <p><input type="submit" value="Submit" /></p>
+              </div>
+              {% endfor %}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="container-fluid text-center">
+    <p>Footer Text</p>
+  </footer>
+</body>
+
+</html>
+
+<!-- <form action="/update_record" method = "POST">
+
+
+
+  {% for row in data %}
+Customer Name : {{row[3]}} <br> 
+<table border = 0>
+
+<tr>
+Enquiry_id : {{row[0]}} <br>
+<input type = "hidden" name = "enquiry_id" value={{row[0]}} 
+<td>Mob No : {{row[4]}}
+</tr>
+
+<tr>
+    <td>Addres Load : {{row[7]}} </td>
+    <td>Address Unload : {{row[8]}} </td>
+</tr>
+
+<tr>
+<td>Assigned to : 
+
+<select id="execetive_name" name="execative_name">
+  <option value="caption">Select Name</option
+  <option value="volvo">Nagesh S</option>
+  <option value="saab">Nitin K</option>
+  <option value="mercedes">Sandeep H</option>
+  <option value="audi">Gaurav Sham</option>
+</select> </td>
+
+<td>Schedule Visit Date: <input type = "text" name = "schedule_visit" default value="2021-02-11"/></td>
+</tr>
+
+<tr>
+  <td></td>
+   
+</tr>
+
+<tr>    
+    <td>Tentative Date of move: <input type = "text" name = "tdate" default value={{row[6]}} /></td>
+</tr>
+
+<p>
+
+<tr><td>House_area_load (sq ft) : <input type = "text" name = "house_size_load" default value={{row[10]}}/></td>                        
+   <td>House_size_unload (sq ft) : <input type = "text" name =  "house_size_unload" default value={{row[10]}}/></td>
+</tr>
+
+<tr>
+   <td>Floor_no_loading : <input type = "text" name = "floor_no_load" default value={{row[11]}} /></td>
+   <td>Floor_no_unloading : <input type = "text" name = "floor_no_unload" default value={{row[12]}} /></td>
+</tr>
+
+<tr>
+   <td>Lift_available_loading(y/n) : <input type = "text" name = "lift_avail_load"/></td>
+   <td>Lift_availale_unloading (y/n) : <input type = "text" name = "lift_avail_unload"/></td>
+</tr>
+
+<tr>
+   <td>Visit_required(y/n) : <input type = "text" name = "visit_required"/></td>
+   <td>Invoice_required(y/n) : <input type = "text" name = "inv_required"/></td>
+</tr>
+</table>
+
+{% endfor %}
+	
+<p>
+   <p><input type = "submit" value = "Submit" /></p>
+   
+</form> -->

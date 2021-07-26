@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% set active_page = "calibration" %}
+{% block content %}
+<div class="container-fluid text-center">    
+  <div class="row content">
+    
+    <div class="row content">
+        <div class="col-sm-1 sidenav"> <!-- Right side margin-->
+          
+        </div>
+        <div class="col-sm-10 text-left">
+          
+          <h3>Enquiry Tracker</h3>
+                                  
+    <div form id="myForm" name="myForm" action="/open_enq"  onsubmit="return validateForm()" method = "POST"> 
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Enquiry ID</th>
+                    <th>Edit Record</th>
+                    <!-- <th>Select</th> -->
+                    <th>Enquiry Date</th>
+                    <th>Party Name</th>
+                    <th>Contact No</th>
+                    <th>eMail</th>
+                    <th>Unload address</th>
+                    <th>City_load</th>
+                    <th>City_unload</th>
+                    <th>Schedule_Vist</th>
+                    
+                </tr>
+            </thead>    
+            <tbody>
+                {% for row in data %}    
+                <tr>
+                    <!-- <td><a href=/disp_table1?recid={{row[0]}}> {{row[0]}}  </a></td> -->
+                    <td><a href=/open_enq?recid={{row[0]}}> {{row[0]}}  </a></td>
+                    <!--<td><a href="{{ url_for('page1', my_var=row) }} ">Submit</a></td> -->
+                    <!-- <td><button type="submit">Edit</button> </td> -->
+                    <!--<td><button  class="btn btn-primary" type="submit" id={{row[0]}}>Select:{{row[0]}} <i class="fas fa-arrow-circle-right"></i></button></td> -->
+                    <!--<td onclick="myAction_row('{{row[0]}}')"> Edit</td> -->
+                    
+                    <td><input type="radio" name="visit" value={{row[0]}} >  </td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td>{{row[5]}}</td>
+                    <td>{{row[6]}}</td>
+                    <td>{{row[7]}}</td>
+                    
+                    
+                    <td><a href=/schedule?recid={{row[0]}}> Schedule Visit  </a></td>          
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+   
+
+    <input type ="hidden" id = "recid" name = "recid" value='6'>
+    <input type = "text" id ="myBt1" name ="myBt1" >
+  
+    <p id="demo"></p>
+    <div class="col-sm-1 sidenav">  <!-- left side margin-->
+    
+    </div>
+</div>
+</div>
+
+
+  Name: <input type="text" name="fname">
+  <input type="submit" value="Submit">
+</form>  
+<script>
+    function myFunction() {
+        document.getElementById("myForm").submit();
+    }
+
+    function myFunction1(x) {
+        alert("Row index is: " + x);
+    }   
+        
+    function myAction_row(x) {
+        document.getElementById("recid").value = x;
+        alert (x);
+        //document.getElementById("myForm").action = "/disp_table1";
+        document.getElementById("myForm").submit();
+    }
+
+    function validateForm(){
+    var x = document.forms["myForm"]["fname"].value;
+    alert ("You enter"+x)
+    if (x == "") {
+      alert("Name must be filled out");
+      return false;
+    }
+    }
+</script>
+
+{% endblock %}

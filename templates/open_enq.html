@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% set active_page = "calibration" %}
+{% block content %}
+
+
+
+<tbody>
+    
+</tbody>
+<div class="container">
+    <h2>Enquiry No : {{recid}}</h2>
+    <form class="form-horizontal" action="/disp_table">
+      <div class="form-group">
+        {% for row in data %}
+        <table class = "table">
+        <tr>
+            <th style="width: 35%">Item</th>
+            <th style="width: 50%">Details</th>
+          <tr>
+        <tr>    
+          <td>Enquiry Date:</td>
+          <td>  {{row[1]}}   </td>
+        </tr>
+      
+        <tr>    
+            <td>Party Name:</td>
+            <td>  {{row[2]}}  </td>
+          </tr>
+
+          <tr>    
+            <td>Party Contact No:</td>
+            <td>  {{row[3]}}    </td>
+          </tr>
+          <tr>    
+            <td>Email ID:</td>
+            <td>  {{row[4]}}   </td>
+          </tr>
+        
+          <tr>    
+              <td>Tentative Shifting Date:</td>
+              <td>  {{row[5]}}  </td>
+            </tr>
+  
+            <tr>    
+              <td>Address of Loading Site:</td>
+              <td>  {{row[6]}}    </td>
+            </tr>
+            <tr>    
+                <td>City of Loading:</td>
+                <td>  {{row[7]}}    </td>
+              </tr>
+              <tr>    
+                <td>Address of Unloading Site:</td>
+                <td>  {{row[8]}}   </td>
+              </tr>
+            
+              <tr>    
+                <td>City of Unloading:</td>
+                <td>  {{row[9]}}  </td>
+              </tr>
+      
+                <tr>    
+                  <td>Size of Household:</td>
+                  <td>  {{row[10]}}    </td>
+                </tr>
+                <tr>    
+                  <td>Availability of Lift at Loading:</td>
+                  <td>  {{row[8]}}   </td>
+                </tr>
+                <tr>    
+                  <td>Availability of Lift at Unoading:</td>
+                  <td>  {{row[9]}}   </td>
+                </tr>
+                
+                <tr>    
+                  <td>Floor No Loading:</td>
+                  <td>  {{row[13]}}  </td>
+                </tr>
+                <tr>    
+                  <td>Floor No Unloading:</td>
+                  <td>  {{row[14]}}  </td>
+                </tr>
+          
+                <tr>    
+                  <td>Household_Size :</td>
+                  <td>  {{row[10]}}    </td>
+                </tr>
+        {% endfor %}
+      </table>
+      <input type="submit" value="Back" name="submit">
+      </div>
+      
+      
+    </form>
+  </div>
+  
+
+
+{% endblock %}

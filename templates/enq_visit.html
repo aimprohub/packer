@@ -1,0 +1,59 @@
+{% extends "base.html" %} {% set active_page = "calibration" %} {% block content%}
+
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+    </div>
+    <div class="col-sm-9 text-left">
+      <h3>Enquiry Visit</h3>
+      <form id="myForm" action="/enq_visit" method="post">
+        <table>
+          <tr>
+            <th style="width: 35%">Item</th>
+            <th style="width: 50%">Details</th>
+          <tr>
+            <td>Party Name</td>
+            <td><input type="text" name="name" class="form-control" value={{party_name}} /></td>
+          </tr>
+          <tr>
+            <td>Enquiry Number</td>
+            <td><input type="text" name="recid" class="form-control" value={{recid}} /></td>
+          </tr>
+          <tr>
+            <td>Prefered Visit Date</td>
+            <td><input type="date" name="p_visit_date" class="form-control" /></td>
+          </tr>
+          <tr>
+            <td>Executive Assign</td>
+            <td>
+              <select name="exe_name" id="cars">
+                {% for row in executive_names %}
+                <option value={{row[2]}}>{{row[1]}} {{row[0]}}</option>
+                {% endfor %}
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Article List</td>
+            <td><input type="text" name="article" class="form-control" /></td>
+          </tr>
+          <tr>
+            <td>Enquiry Number</td>
+            <td>
+              <input type="radio" name="Lift_Ld" checked> Available
+
+              <input type="radio" name="Lift_Ld"> Not Available
+            </td>
+          </tr>
+          <tr>
+            <td><input type="submit" id="insert" name="insert" value="Reset" /></td>
+            <td><input type="submit" id="insert" name="insert" value="Save Visit deails" /></td>
+          </tr>
+          <tbody>
+    </div>
+    {% endblock %}
+    </tbody>
+    </table>
+    </form>
+  </div>
+</div>

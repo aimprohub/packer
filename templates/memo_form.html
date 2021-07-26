@@ -1,0 +1,118 @@
+{% extends "base.html" %} {% set active_page = "calibration" %} {% block content %}
+
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+
+    </div>
+    <div class="col-sm-9 text-left">
+
+      <h3>Work Order Submission</h3>
+
+      <form id="myForm" action="/memo_success" method="post">
+        <table>
+          <tr>
+            <th style="width: 35%">Item</th>
+            <th style="width: 50%">Details</th>
+          <tr>
+            <td>Party Name</td>
+            <td>{{party_name}} </td>
+          </tr>
+          <tr>
+            <td>Enquiry Number</td>
+            <td>{{recid}} </td>
+          </tr>
+          <tr>
+            <td>Visit Number</td>
+            <td>{{visit_no}} </td>
+          </tr>
+          <tr>
+            <td>Memo Order Date</td>
+            <td><input type="date" name="memodate" class="form-control" value="{{today1}}" /></td>
+          </tr>
+          <tr>
+            <td>Consignor</td>
+            <td><input type="text" name="consignor" class="form-control" value={{"consignor"}} /></td>
+          </tr>
+
+          <tr>
+            <td>Consignor Address</td>
+            <td><input type="text" name="consignorAdd" class="form-control" value={{address_unloading}} /></td>
+          </tr>
+          <tr>
+            <td>Consignee</td>
+            <td><input type="text" name="consignee1" class="form-control" value='Consignee1' /></td>
+          </tr>
+          <tr>
+            <td>Consignee Address</td>
+            <td><input type="text" name="consigneeAdd" class="form-control" value={{address_unloading}} /></td>
+          </tr>
+          <tr>
+            <td>Driver Name</td>
+            <td><input type="text" name="driver_name" class="form-control" value="" /></td>
+          </tr>
+          <tr>
+            <td>Driver allowance</td>
+            <td><input type="text" name="driver_allowace" class="form-control" value="0" /></td>
+          </tr>
+          <tr>
+            <td>Superviser Name</td>
+            <td><input type="text" name="sup_name" class="form-control" value="" /></td>
+          </tr>
+          <tr>
+            <td>Superviser Amt Rs.</td>
+            <td><input type="text" name="sup_amt" class="form-control" value="0" /></td>
+          </tr>
+
+          <tr>
+            <td>Goods description</td>
+            <td><input type="text" name="good_desc" class="form-control" value="" /></td>
+          </tr>
+          <tr>
+            <td>Truck Number</td>
+            <td><input type="text" name="truck_no" class="form-control" value="" /></td>
+          </tr>
+          <tr>
+            <td>Truck Owner</td>
+            <td><input type="text" name="truck_owner" class="form-control" value="" /></td>
+          </tr>
+
+          <tr>
+            <td>Labour Name</td>
+            <td><input type="text" name="labour_name" class="form-control" value="" /></td>
+          </tr>
+          <tr>
+            <td>Labour Charges Rs.</td>
+            <td><input type="text" name="labour_charges" class="form-control" value="0" /></td>
+          </tr>
+          <tr>
+            <td>Fright Charges Rs.</td>
+            <td><input type="text" name="fright_charges" class="form-control" value="0" /></td>
+          </tr>
+          <tr>
+            <td><input type="submit" id="insert" name="insert" value="Reset" /></td>
+            <td><input type="submit" id="insert" name="insert" value="Submit Memo" /></td>
+
+          </tr>
+          <tbody>
+    </div>
+    <input type="hidden" id="recid" name="recid" value="{{recid}}">
+    <input type="hidden" id="visit_no" name="visit_no" value="{{visit_no}}">
+    <input type="hidden" id="party_name" name="party_name" value="{{party_name}}">
+
+    </tbody>
+
+    </table>
+    {% endblock %}
+    </form>
+  </div>
+</div>
+
+<script>
+  function getDocVal() {
+    var x = 22;
+    //document.getElementByName('recid').value=x;
+    alert('recid ', x);
+  }
+
+</script>

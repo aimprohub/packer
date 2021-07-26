@@ -1,0 +1,112 @@
+{% extends "base.html" %} {% set active_page = "calibration" %} {% block content %}
+
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+
+    </div>
+    <div class="col-sm-9 text-left">
+
+      <h3>Material Selection: Enq Id: {{enq_id}}</h3>
+
+      <form id="myForm3" action="/material_issued" method="post">
+        <!-- <form id="myForm3" method="GET" > -->
+
+        <table>
+          <tr>
+            <th style="width: 35%">Item</th>
+            <th style="width: 25%">Details</th>
+            <th style="width: 25%">Qty Issued</th>
+            {% for row in material_data %}
+
+          <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td><input type="text" id="qty_issued" name="qty_issued" class="form-control" value=""></td>
+          </tr>
+
+          {% endfor %}
+
+          <tr>
+            <td><input type="submit" id="insert" name="insert" value="Reset" /></td>
+            <td></td>
+            <td><input type="submit" id="insert" name="insert" value="Save Qty" /><button class="btn btn-primary"
+                id="save_btn" onclick="myFunction()">Save All</button></td>
+
+          </tr>
+        </div>
+    </div>
+
+    </table>
+    </form>
+  </div>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myForm3");
+        var txt = "{";
+        var i;
+
+        // console.log()
+        alert(" I am in myFunction len=", x.length)
+        for (i = 0; i < x.length; i++) {
+          txt = txt + x.elements[i].name + ":";
+          txt = txt + x.elements[i].value + "<br>";
+
+        }
+        //document.getElementById("demo").innerHTML = txt;
+        var result = [];
+        for (var i = 0; i < 5; i++) {
+          var obj = {}
+          obj.name = document.querySelectorAll('[name="qty_issued"]')[i].value
+          result.push(obj)
+        }
+        // alert("A", JSON.stringify(result));
+        alert("B", JSON.parse(JSON.stringify(result)));
+        console.log(result)
+      }
+
+      function getAllValues() {
+        var y = document.getElementById("myForm3");
+        var txt = "";
+        var i;
+        var txtname = "";
+        var jsontxt = "{";
+
+        alert("I am in getAllVal:", y.length)
+        var fruits, text, fLen, i, n, index_flag = "False", txtn = "";
+        for (j = 0; j < y.length; j++) {
+          if (index_flag == "True") {
+            index_flag = "False";
+            continue;
+          }
+          text = y.elements[j].value;
+          //    n = text.indexOf("|-"); 
+          //    if (n >=0) {
+          //       index_flag = "True";
+          //       //txt += "'"+fruits[i+1]+ "' : '" +fruits[i+3]+"', ";
+          //       x[i]= y[i+1];
+          //       x[i+1] = y[i+3];
+          //       i=i+2;
+          continue;
+          //    }   
+        }
+        x = y;
+        for (i = 0; i < x.length - 10; i++) {
+          txt = x.elements[i].value;
+          alert("No1");
+          txtname = document.getElementById("myForm3").elements[i].name;
+          alert("No2 ");
+          jsontxt = jsontxt + "\"" + txtname + "\"" + " : \"" + txt + "\",";
+        }
+        var jsonelem = jsontxt.replace(/,$/, '}');
+        //document.getElementById("demo").innerHTML = patt1 ;
+        alert(jsonelem);
+        document.getElementById("textall").value = jsonelem;
+        return (jsonelem)
+      }
+    </script>
+
+
+    {% endblock %}
+
+  
